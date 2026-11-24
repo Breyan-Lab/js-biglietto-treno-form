@@ -13,6 +13,12 @@ form.addEventListener("submit", function (event) {
     const km = parseFloat(inputKm.value);
     const fascia = selectEta.value;
 
+    // controllo dei dati inseriti
+    if (nome.trim() === "" || isNaN(km) || km <= 0) {
+        risultato.innerHTML = `<p class="errore">Inserisci un nome e un numero di km valido (maggiore di 0).</p>`;
+        return;
+    }
+
     const prezzoBase = km * PREZZO_KM;
     let sconto = 0;
     let tariffa = "Standard";
